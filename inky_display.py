@@ -9,6 +9,7 @@ from inky.auto import auto
 from PIL import Image, ImageFont, ImageDraw
 from font_source_serif_pro import SourceSerifProSemibold
 from font_source_sans_pro import SourceSansProSemibold
+import sys
 
 
 # Set up the correct display and scaling factors
@@ -90,6 +91,10 @@ if __name__ == "__main__":
     #If there's more than one argument, throw an error.
 
     #Get the first argument, and pass it in
-
-    input_string = "Es gibt viele verschiedene Biersorten in Deutschland.\nThere are many different types of beer in Germany."
+    
+    args = sys.argv
+    print('Number of arguments:', len(args), 'arguments.')
+    arg = str(args[0])
+    print('Argument:', arg)
+    input_string = arg
     display_string(input_string)

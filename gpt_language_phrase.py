@@ -1,15 +1,21 @@
 #!/usr/bin/env python3
 
+from dotenv import load_dotenv
 import openai
 import os
 import json
 
 def get_language_phrase():
-    print("Beginning to get a phrase from GPT.")
+    print("Loading environment variables.")
+    load_dotenv()
+    api_key = os.environ['API_KEY']
+    openai.api_key = api_key
+
+    print("Loading configs.")
     with open('config.json') as f:
         config = json.load(f)
 
-    openai.api_key = os.environ['api_key']
+    print("Beginning to get a phrase from GPT.")
 
     messages = [
         {"role": "system", "content": "You are a writer for a language-learning website, writing sample sentences."},
