@@ -1,0 +1,7 @@
+{
+    "base_prompt": "Give me a sentence, in the style of an official language learning organization, tailored for language learners. On a separate line, provide the English translation. Only specify the sentence and its translation. Do not specify which is the 'Sentence' or which is the 'Translation'.",
+    "language": "German",
+    "level": "A2",
+    "topic": "Beer"
+  }
+  
