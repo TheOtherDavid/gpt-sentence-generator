@@ -64,9 +64,8 @@ def display_string(input_string):
     quote.replace("\n", "\n\n")
 
     print("Reflowing string")
-    #reflowed = reflow_quote(quote, max_width, quote_font)
-    #test without any reflowing
-    reflowed = quote
+    reflowed = reflow_quote(quote, max_width, quote_font)
+
     p_w, p_h = quote_font.getsize(reflowed)
     p_h = p_h * (reflowed.count("\n") + 1)
 
