@@ -19,7 +19,7 @@ inky_display.set_border(inky_display.WHITE)
 
 def reflow_quote(quote, width, font):
     words = quote.split(" ")
-    reflowed = '"'
+    reflowed = ''
     line_length = 0
 
     for i in range(len(words)):
@@ -32,8 +32,9 @@ def reflow_quote(quote, width, font):
         else:
             line_length = word_length
             reflowed = reflowed[:-1] + "\n  " + word
+            #reflowed += word
 
-    reflowed = reflowed.rstrip() + '"'
+    reflowed = reflowed.rstrip()
 
     return reflowed
 
@@ -57,18 +58,23 @@ def display_string(input_string):
 
     below_max_length = False
 
-    while not below_max_length:
-        quote = input_string
+    quote = input_string
 
-        print("Reflowing string")
-        reflowed = reflow_quote(quote, max_width, quote_font)
-        p_w, p_h = quote_font.getsize(reflowed)
-        p_h = p_h * (reflowed.count("\n") + 1)
+    #Add another newline
+    quote.replace("\n", "\n\n")
 
-        if p_h < max_height:
-            below_max_length = True
-        else:
-            continue
+    print("Reflowing string")
+    #reflowed = reflow_quote(quote, max_width, quote_font)
+    #test without any reflowing
+    reflowed = quote
+    p_w, p_h = quote_font.getsize(reflowed)
+    p_h = p_h * (reflowed.count("\n") + 1)
+
+    if p_h < max_height:
+        below_max_length = True
+    else:
+        #I don't know what to do here
+        print("This quote might be too long. Figure out what to do here.")
 
     quote_x = (WIDTH - max_width) / 2
     quote_y = ((HEIGHT - max_height) + (max_height - p_h - author_font.getsize("ABCD ")[1])) / 2
@@ -78,6 +84,7 @@ def display_string(input_string):
     print(reflowed + "\n")
 
     print("Displaying text on device")
+    inky_display.rotation = 180
     inky_display.set_image(img)
 
     inky_display.show()

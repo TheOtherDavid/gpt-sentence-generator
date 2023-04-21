@@ -37,7 +37,8 @@ def get_language_phrase():
     messages.append({"role": "user", "content": message})
     chat_completion = openai.ChatCompletion.create(
         model="gpt-3.5-turbo",
-        messages=messages
+        messages=messages,
+        temperature=1.5
     )
     answer = chat_completion.choices[0].message.content
     print(f"Response: {answer}")
