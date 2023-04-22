@@ -4,6 +4,7 @@ from dotenv import load_dotenv
 import openai
 import os
 import json
+import random
 
 def get_language_phrase():
     print("Loading environment variables.")
@@ -15,6 +16,14 @@ def get_language_phrase():
     with open('config.json') as f:
         config = json.load(f)
 
+    print("Choosing topic.")
+    topics = config['topics']
+    topic = random.choice(topics)
+    language = config['language']
+    level = config['level']
+
+    print("Topic is: " + topic)
+
     print("Beginning to get a phrase from GPT.")
 
     messages = [
@@ -22,11 +31,8 @@ def get_language_phrase():
     ]
 
     prompt = config['base_prompt']
-    language = config['language']
     prompt = prompt + "\nLanguage: " + language
-    level = config['level']
     prompt = prompt + "\nLevel: " + level
-    topic = config['topic']
     prompt = prompt + "\nTopic: " + topic
 
     message = prompt
