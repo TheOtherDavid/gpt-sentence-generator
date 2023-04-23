@@ -6,7 +6,7 @@ def get_logger():
     logger.setLevel(logging.DEBUG)
 
     # Define log file path based on an environment variable
-    log_file = os.environ.get('LOG_FILE_LOCATION', '/var/log/gpt-sentence-generator.log')
+    log_file = os.environ.get('LOG_FILE_LOCATION', '/logs/gpt-sentence-generator.log')
     
     # Create a file handler and add it to the logger
     file_handler = logging.FileHandler(log_file)
