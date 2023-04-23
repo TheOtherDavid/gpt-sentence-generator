@@ -18,8 +18,8 @@ def main():
         while True:
             logger.info("Executing Hourly GPT Phrase Generator")
             display_gpt_sentence()
-            logger.info("Sleeping for an hour...")
-            time.sleep(loop_time)
+            logger.info("Sleeping for" + str(loop_time) + "minutes")
+            time.sleep(loop_time * 60)
     else:
         logger.info("Executing Single GPT Phrase Generator")
         display_gpt_sentence()
