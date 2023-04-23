@@ -1,4 +1,4 @@
-import sys
+import json
 import time
 import gpt_language_phrase
 import inky_display
