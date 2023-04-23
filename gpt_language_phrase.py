@@ -5,26 +5,29 @@ import openai
 import os
 import json
 import random
+import logging_utils
+
+logger = logging_utils.get_logger()
 
 def get_language_phrase():
-    print("Loading environment variables.")
+    logger.info("Loading environment variables.")
     load_dotenv()
     api_key = os.environ['API_KEY']
     openai.api_key = api_key
 
-    print("Loading configs.")
+    logger.info("Loading configs.")
     with open('config.json') as f:
         config = json.load(f)
 
-    print("Choosing topic.")
+    logger.info("Choosing topic.")
     topics = config['topics']
     topic = random.choice(topics)
     language = config['language']
     level = config['level']
 
-    print("Topic is: " + topic)
+    logger.info("Topic is: " + topic)
 
-    print("Beginning to get a phrase from GPT.")
+    logger.info("Beginning to get a phrase from GPT.")
 
     messages = [
         {"role": "system", "content": "You are a writer for a language-learning website, writing sample sentences."},
@@ -36,10 +39,10 @@ def get_language_phrase():
     prompt = prompt + "\nTopic: " + topic
 
     message = prompt
-    print("Prompt:" + prompt)
+    logger.info("Prompt:" + prompt)
 
 
-    print("Making call to OpenAI")
+    logger.info("Making call to OpenAI")
     messages.append({"role": "user", "content": message})
     chat_completion = openai.ChatCompletion.create(
         model="gpt-3.5-turbo",
@@ -47,7 +50,7 @@ def get_language_phrase():
         temperature=1.5
     )
     answer = chat_completion.choices[0].message.content
-    print(f"Response: {answer}")
+    logger.info(f"Response: {answer}")
     return answer
 
 if __name__ == '__main__':

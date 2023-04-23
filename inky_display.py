@@ -9,6 +9,7 @@ from inky.auto import auto
 from PIL import Image, ImageFont, ImageDraw
 from font_source_serif_pro import SourceSerifProSemibold
 from font_source_sans_pro import SourceSansProSemibold
+import logging_utils
 import sys
 
 
@@ -16,6 +17,7 @@ import sys
 
 inky_display = auto(ask_user=True, verbose=True)
 inky_display.set_border(inky_display.WHITE)
+logger = logging_utils.get_logger()
 
 def reflow_quote(quote, width, font):
     words = quote.split(" ")
@@ -40,7 +42,7 @@ def reflow_quote(quote, width, font):
 
 
 def display_string(input_string):
-    print("Beginning display string function")
+    logger.info("Beginning display string function")
     WIDTH = inky_display.width
     HEIGHT = inky_display.height
 
@@ -63,7 +65,7 @@ def display_string(input_string):
     #Add another newline
     quote.replace("\n", "\n\n")
 
-    print("Reflowing string")
+    logger.info("Reflowing string")
     reflowed = reflow_quote(quote, max_width, quote_font)
 
     p_w, p_h = quote_font.getsize(reflowed)
@@ -73,7 +75,7 @@ def display_string(input_string):
         below_max_length = True
     else:
         #I don't know what to do here
-        print("This quote might be too long. Figure out what to do here.")
+        logger.info("This quote might be too long. Figure out what to do here.")
 
     quote_x = (WIDTH - max_width) / 2
     quote_y = ((HEIGHT - max_height) + (max_height - p_h - author_font.getsize("ABCD ")[1])) / 2
@@ -82,14 +84,14 @@ def display_string(input_string):
 
     print(reflowed + "\n")
 
-    print("Displaying text on device")
+    logger.info("Displaying text on device")
     inky_display.rotation = 180
     inky_display.set_image(img)
 
     inky_display.show()
 
 if __name__ == "__main__":
-    print("""Inky wHAT: Display String
+    logger.info("""Inky wHAT: Display String
 
     Display a passed-in string on Inky wHAT.
     """)
@@ -99,8 +101,8 @@ if __name__ == "__main__":
     #Get the first argument, and pass it in
     
     args = sys.argv
-    print('Number of arguments:', len(args), 'arguments.')
+    logger.info('Number of arguments:', len(args), 'arguments.')
     arg = str(args[0])
-    print('Argument:', arg)
+    logger.info('Argument:', arg)
     input_string = arg
     display_string(input_string)

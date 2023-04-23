@@ -2,7 +2,10 @@ import sys
 import time
 import gpt_language_phrase
 import inky_display
+import logging_utils
 from argparse import ArgumentParser
+
+logger = logging_utils.get_logger()
 
 def main():
     args = parse_arguments()
@@ -11,12 +14,12 @@ def main():
 
     if args.loop:
         while True:
-            print("Executing Hourly GPT Phrase Generator")
+            logger.info("Executing Hourly GPT Phrase Generator")
             display_gpt_sentence()
-            print("Sleeping for an hour...")
+            logger.info("Sleeping for an hour...")
             time.sleep(loop_time)
     else:
-        print("Executing Single GPT Phrase Generator")
+        logger.info("Executing Single GPT Phrase Generator")
         display_gpt_sentence()
 
 def display_gpt_sentence():

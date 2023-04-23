@@ -1,0 +1,12 @@
+2023-04-22 21:48:54,277 INFO Loading environment variables.
+2023-04-22 21:48:54,279 INFO Loading configs.
+2023-04-22 21:48:54,280 INFO Choosing topic.
+2023-04-22 21:48:54,280 INFO Topic is: Travel
+2023-04-22 21:48:54,280 INFO Beginning to get a phrase from GPT.
+2023-04-22 21:48:54,280 INFO Prompt:Give me a sentence, in the style of an official language learning organization, tailored for language learners. On a separate line, provide the English translation. Only specify the sentence and its translation. Do not specify which is the 'Sentence' or which is the 'Translation'.
+Language: German
+Level: A1
+Topic: Travel
+2023-04-22 21:48:54,281 INFO Making call to OpenAI
+2023-04-22 21:48:56,137 INFO Response: Ich brauche ein Hotelzimmer für eine Nacht.
+I need a hotel room for one night.
