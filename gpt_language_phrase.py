@@ -1,17 +1,17 @@
 #!/usr/bin/env python3
 
-from dotenv import load_dotenv
 import openai
 import os
 import json
 import random
 import logging_utils
+from dotenv import load_dotenv
 
+load_dotenv()
 logger = logging_utils.get_logger()
 
 def get_language_phrase():
     logger.info("Loading environment variables.")
-    load_dotenv()
     api_key = os.environ['API_KEY']
     openai.api_key = api_key
 

@@ -4,7 +4,9 @@ import gpt_language_phrase
 import inky_display
 import logging_utils
 from argparse import ArgumentParser
+from dotenv import load_dotenv
 
+load_dotenv()
 logger = logging_utils.get_logger()
 
 def main():
