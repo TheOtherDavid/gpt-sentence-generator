@@ -1,5 +1,6 @@
 {
     "base_prompt": "Give me a sentence, in the style of an official language learning organization, tailored for language learners. On a separate line, provide the English translation. Only specify the sentence and its translation. Do not specify which is the 'Sentence' or which is the 'Translation'.",
+    "cleanup_prompt": "Take the following string, and format it into the following format:\n{German phrase}\n{English Translation}.\nRemove all quotes, all references to which sentence is which language, and all references to which sentence is the translation. Only specify the formatted string.\nHere is the string:",
     "language": "German",
     "level": "A1",
     "topics": ["Cars","Food","Travel","Hamburg","Leipzig","Harz Mountains","World War 2 History","Roman History","Egyptian History"],

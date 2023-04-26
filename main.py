@@ -1,7 +1,7 @@
 import json
 import time
 import gpt_language_phrase
-import inky_display
+#import inky_display
 import logging_utils
 import file_operations
 from argparse import ArgumentParser
@@ -27,6 +27,8 @@ def main():
 
 def display_gpt_sentence():
     text = gpt_language_phrase.get_language_phrase()
+    formatted_text = gpt_language_phrase.cleanup_language_phrase(text)
+
     inky_display.display_string(text)
     file_operations.save_text(text)
 
