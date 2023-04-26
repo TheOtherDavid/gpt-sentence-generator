@@ -1,7 +1,7 @@
 import json
 import time
 import gpt_language_phrase
-#import inky_display
+import inky_display
 import logging_utils
 import file_operations
 from argparse import ArgumentParser
