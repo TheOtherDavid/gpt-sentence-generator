@@ -3,6 +3,7 @@ import time
 import gpt_language_phrase
 import inky_display
 import logging_utils
+import file_operations
 from argparse import ArgumentParser
 from dotenv import load_dotenv
 
@@ -27,6 +28,7 @@ def main():
 def display_gpt_sentence():
     text = gpt_language_phrase.get_language_phrase()
     inky_display.display_string(text)
+    file_operations.save_text(text)
 
 def parse_arguments():
     parser = ArgumentParser(description="Run the Raspberry Pi program.")
